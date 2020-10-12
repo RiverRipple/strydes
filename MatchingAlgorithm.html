@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <body>
+    <title>
+      Matching Algorithm
+    </title>
+    <input type="text" id="projectName" placeholder="Project Name">
+    <input type="text" id="yourName" placeholder="Your Name">
+    <input type="checkbox" id="python" value="Python">
+    <input type="checkbox" id="javascript" value="JavaScript">
+    <input type="checkbox" id="java" value="Java">
+    <button onclick="printProject()">Create Project</button>
+  </body>
+  <script>
+    class Project {
+      constructor(projectName, yourName, languages){
+        this.projectName = projectName;
+        this.yourName = yourName;
+        this.languages = languages;
+      }
+
+      printAttrs(){
+        console.log(this.projectName);
+        console.log(this.yourName);
+        for(var i = 0; i < this.languages.length; i++){
+          console.log(this.languages[i])
+        }
+      }
+    }
+
+    function printProject() {
+      var projectName = document.getElementById("projectName").value
+      document.getElementById("projectName").value=''
+
+      var yourName = document.getElementById("yourName").value
+      document.getElementById("yourName").value=''
+
+      var languages = [];
+
+      if(document.getElementById("python").checked == true){
+        languages.push(document.getElementById("python").value)
+      }
+      document.getElementById("python").checked = false;
+
+      if(document.getElementById("javascript").checked == true){
+        languages.push(document.getElementById("javascript").value)
+      }
+      document.getElementById("javascript").checked = false;
+
+      if(document.getElementById("java").checked == true){
+        languages.push(document.getElementById("java").value)
+      }
+      document.getElementById("java").checked = false;
+
+      var project = new Project(projectName, yourName, languages);
+      project.printAttrs();
+    }
+  </script>
+</html>
